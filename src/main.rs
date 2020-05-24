@@ -23,7 +23,7 @@ fn main() {
     }
 
     if args[1] == "hexdump" {
-        hexdump(buffer);
+        disassembler::hexdump(buffer);
     }
     else if args[1] == "disassemble" {
         //for (i, v) in buffer.iter().enumerate() {
@@ -46,18 +46,6 @@ fn read_file_to_buf(file: &str, buffer: &mut Vec<u8>) -> io::Result<()> {
     f.read_to_end(buffer)?;
 
     Ok(())
-}
-
-fn hexdump(buffer: Vec<u8>) {
-    for (i, v) in buffer.iter().enumerate() {
-        if i % 16 == 0 {
-            print!("{:04x} ", i);
-        }
-        print!("{:02x} ", v);
-        if i % 16 == 15 {
-            print!("\n");
-        }
-    }
 }
 
 fn usage() {

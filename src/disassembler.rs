@@ -311,3 +311,15 @@ pub fn disassemble8080_op(buffer: &Vec<u8>, pc: usize) -> usize {
 
     opbytes
 }
+
+pub fn hexdump(buffer: Vec<u8>) {
+    for (i, v) in buffer.iter().enumerate() {
+        if i % 16 == 0 {
+            print!("{:04x} ", i);
+        }
+        print!("{:02x} ", v);
+        if i % 16 == 15 {
+            print!("\n");
+        }
+    }
+}
