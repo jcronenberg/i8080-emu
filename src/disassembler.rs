@@ -4,7 +4,6 @@ pub fn disassemble8080_op(buffer: &Vec<u8>, pc: usize) -> usize {
     //Print current pc
     print!("{:04x} ", pc);
 
-    //Print asm
     match buffer[pc]
     {
         0x00 => println!("NOP"),
