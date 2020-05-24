@@ -34,6 +34,10 @@ fn main() {
             i += disassembler::disassemble8080_op(&buffer, i);
         }
     }
+    else {
+        println!("Unknown command!\n");
+        usage();
+    }
 }
 
 fn read_file_to_buf(file: &str, buffer: &mut Vec<u8>) -> io::Result<()> {
