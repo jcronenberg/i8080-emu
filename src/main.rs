@@ -6,19 +6,20 @@ use std::fs::File;
 mod disassembler;
 
 fn main() {
-
     let args: Vec<String> = env::args().collect();
-    if args.len() != 3 {
+    if args.len() == 1 {
         usage();
-        return;
+        return
+    } else if args.len() != 3 {
+        usage();
+        std::process::exit(1);
     }
 
     let mut buffer = Vec::new();
     match read_file_to_buf(&args[2], &mut buffer) {
         Ok(()) => println!("Successfully loaded file: {}", args[2]),
         Err(i) => {
-            println!("Error loading file '{}': {}", args[2], i);
-            return
+            panic!("Error loading file '{}': {}", args[2], i);
         }
     }
 
@@ -33,6 +34,7 @@ fn main() {
     } else {
         println!("Unknown command!\n");
         usage();
+        std::process::exit(1);
     }
 }
 
