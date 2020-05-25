@@ -24,17 +24,13 @@ fn main() {
 
     if args[1] == "hexdump" {
         disassembler::hexdump(buffer);
-    }
-    else if args[1] == "disassemble" {
-        //for (i, v) in buffer.iter().enumerate() {
-        //    disassemble8080Op(buffer);
+    } else if args[1] == "disassemble" {
         let length = buffer.len();
         let mut i:usize = 0;
         while i < length {
             i += disassembler::disassemble8080_op(&buffer, i);
         }
-    }
-    else {
+    } else {
         println!("Unknown command!\n");
         usage();
     }

@@ -4,8 +4,7 @@ pub fn disassemble8080_op(buffer: &Vec<u8>, pc: usize) -> usize {
     //Print current pc
     print!("{:04x} ", pc);
 
-    match buffer[pc]
-    {
+    match buffer[pc] {
         0x00 => println!("NOP"),
         0x01 => {println!("LXI    B,#${:02x}{:02x}", buffer[pc + 2], buffer[pc + 1]);
             opbytes = 3},
