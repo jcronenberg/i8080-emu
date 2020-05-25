@@ -49,7 +49,7 @@ fn read_file_to_buf(file: &str, buffer: &mut Vec<u8>) -> io::Result<()> {
 }
 
 fn usage() {
-    println!("USAGE: i8080-emu <command> <file to disassemble>\n");
+    println!("USAGE: i8080-emu <command> <file>\n");
     println!("COMMANDS:");
     println!("disassemble   disassemble file and output to stdout");
     println!("hexdump       hexdump file and output to stdout");
