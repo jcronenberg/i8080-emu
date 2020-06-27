@@ -4,6 +4,7 @@ use std::io::prelude::*;
 use std::fs::File;
 
 mod disassembler;
+mod i8080cpu;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -29,7 +30,19 @@ fn main() {
         let length = buffer.len();
         let mut i:usize = 0;
         while i < length {
-            i += disassembler::disassemble8080_op(&buffer, i);
+            i += disassembler::disassemble_8080_op(&buffer, i);
+        }
+    } else if args[1] == "emulate" {
+        let mut state = i8080cpu::State8080::new();
+
+        //Load memory
+        for i in 0..buffer.len() {
+            state.memory[i] = buffer[i];
+        }
+
+        //Main Loop
+        loop {
+            i8080cpu::emulate_8080_op(&mut state);
         }
     } else {
         println!("Unknown command!\n");

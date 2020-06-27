@@ -1,4 +1,4 @@
-pub fn disassemble8080_op(buffer: &Vec<u8>, pc: usize) -> usize {
+pub fn disassemble_8080_op(buffer: &Vec<u8>, pc: usize) -> usize {
     let mut opbytes:usize = 1;
 
     //Print current pc
